@@ -11,6 +11,10 @@
 .idea
 *.iml
 
+# Gradle
+.gradle
+*/build
+
 # vi files
 *.swp  
 *.swo

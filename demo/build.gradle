@@ -6,17 +6,18 @@ buildscript {
         classpath 'com.android.tools.build:gradle:0.7.+'
     }
 }
-apply plugin: 'android-library'
+apply plugin: 'android'
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    compile 'com.actionbarsherlock:actionbarsherlock:4.4.0@aar'
+    compile project(':library')
 }
 
 android {
     compileSdkVersion 19
     buildToolsVersion "19"
+
 }
