@@ -12,10 +12,6 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
-    compile 'com.actionbarsherlock:actionbarsherlock:4.4.0@aar'
-}
-
 android {
     compileSdkVersion 19
     buildToolsVersion "19"
