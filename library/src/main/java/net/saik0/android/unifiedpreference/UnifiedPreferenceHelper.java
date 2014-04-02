@@ -40,14 +40,14 @@ import android.util.TypedValue;
 import android.util.Xml;
 
 public class UnifiedPreferenceHelper {
-	private final PreferenceActivity mActivity;
+	private final UnifiedPreferenceActivity mActivity;
 	private int mHeaderRes;
 	private List<LegacyHeader> mLegacyHeaders = new LinkedList<LegacyHeader>();
 	private Boolean mSinglePane;
 	private String mSharedPreferencesName;
 	private int mSharedPreferencesMode;
 
-	public UnifiedPreferenceHelper(PreferenceActivity activity) {
+	public UnifiedPreferenceHelper(UnifiedPreferenceActivity activity) {
 		mActivity = activity;
 	}
 
@@ -182,7 +182,7 @@ public class UnifiedPreferenceHelper {
 				mActivity.getPreferenceManager().setSharedPreferencesMode(mSharedPreferencesMode);
 			}
 
-			onBuildLegacyHeaders(mLegacyHeaders);
+			mActivity.onBuildLegacyHeaders(mLegacyHeaders);
 
 			// Add all preferences, first create a new preference screen if necessary
 			if (mActivity.getPreferenceScreen() == null) {
@@ -219,7 +219,7 @@ public class UnifiedPreferenceHelper {
 	public void onBuildHeaders(List<Header> target) {
 		// Do not build headers unless in single pane mode.
 		if (!isSinglePane() && mHeaderRes > 0) {
-			loadHeadersFromResource(mHeaderRes, target);
+			mActivity.loadHeadersFromResource(mHeaderRes, target);
 		}
 	}
 
@@ -235,7 +235,7 @@ public class UnifiedPreferenceHelper {
 	 */
 	public void onBuildLegacyHeaders(List<LegacyHeader> target) {
 		if (mHeaderRes > 0) {
-			loadLegacyHeadersFromResource(mHeaderRes, mLegacyHeaders);
+			mActivity.loadLegacyHeadersFromResource(mHeaderRes, mLegacyHeaders);
 		}
 	}
 
